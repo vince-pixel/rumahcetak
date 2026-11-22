@@ -1,0 +1,24 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Demo undangan modern</title><style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:15px/1.6 Georgia,serif;background:#ffffff;color:#111111;text-align:center}
+h1,h2,h3,p{margin:0}.cv{position:fixed;inset:0;z-index:5;display:grid;place-content:center;gap:.7rem;padding:1.5rem;background:#ffffff;transition:transform .7s,opacity .7s}.cv.o{transform:translateY(-100%);opacity:0}
+.cv h1{font-size:2.1rem}.sm{font:600 .7rem sans-serif;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+button{font:600 .85rem sans-serif;background:#111111;color:#fff;border:0;border-radius:99px;padding:.7rem 1.4rem;cursor:pointer}
+main{padding:1.2rem 1.2rem 2rem;display:grid;gap:1.6rem}.mu{display:flex;gap:.7rem;align-items:center;justify-content:center;font:.75rem sans-serif;border:1px solid #11111155;border-radius:99px;padding:.4rem .8rem}
+.dk{width:30px;height:30px;border-radius:50%;background:conic-gradient(#111111,#222,#111111);animation:sp 6s linear infinite}.dk.p{animation-play-state:paused}@keyframes sp{to{transform:rotate(360deg)}}
+.mu button{padding:.3rem .8rem;font-size:.7rem}.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}.cd div{border:1px solid #11111166;border-radius:12px;padding:.5rem 0}.cd b{display:block;font-size:1.3rem}.cd small{font:.65rem sans-serif;opacity:.7}
+.cp{display:grid;gap:.2rem}.amp{font-size:1.6rem;color:#111111}.card{border:1px solid #11111155;border-radius:16px;padding:1rem;display:grid;gap:.5rem}
+input{font:inherit;padding:.6rem;border:1px solid #11111188;border-radius:10px;background:transparent;color:inherit;width:100%}a.b{display:inline-block;text-decoration:none;background:#111111;color:#fff;border-radius:99px;padding:.5rem 1.1rem;font:600 .8rem sans-serif}
+#nt{font:.8rem sans-serif;color:#111111;min-height:1.2em}small.f{font:.7rem sans-serif;opacity:.6}@media(prefers-reduced-motion:reduce){.dk{animation:none}.cv{transition:none}}</style></head><body>
+<section class="cv" id="cv"><p class="sm">The Wedding Of</p><h1>Andi &amp; Rini</h1><p>Kepada Yth. Tamu Spesial:</p><p class="sm">Bapak / Ibu / Rekan Kerja</p><div><button id="ob">Buka Undangan</button></div></section>
+<main><div class="mu"><span class="dk" id="dk"></span><span>Lagu latar (demo)</span><button id="mb">Pause</button></div>
+<div class="cp"><p class="sm">Undangan Pernikahan</p><h2 style="font-size:1.8rem">Andi &amp; Rini</h2><p>Dengan penuh syukur, kami mengundang Anda hadir di hari bahagia kami:</p><p><b>Andi Pratama</b></p><span class="amp">&amp;</span><p><b>Rini Lestari</b></p></div>
+<div><p class="sm" style="margin-bottom:.5rem">Hitung Mundur Acara</p><div class="cd"><div><b id="d">0</b><small>Hari</small></div><div><b id="h">0</b><small>Jam</small></div><div><b id="m">0</b><small>Mnt</small></div><div><b id="s">0</b><small>Dtk</small></div></div></div>
+<div class="card"><h3>Akad &amp; Resepsi</h3><p id="dt"></p><p>Grand Ballroom Graha (contoh)</p><div><a class="b" href="https://maps.google.com" target="_blank" rel="noopener">Buka Google Maps</a></div></div>
+<div class="card"><h3>Konfirmasi Kehadiran (RSVP)</h3><input id="nm" placeholder="Tuliskan nama Anda..." maxlength="40"><div><button id="rb">Kirim Ucapan Selamat</button></div><p id="nt"></p></div>
+<small class="f">Demo interaktif, data tidak dikirim. Dibuat oleh Rumah Cetak.</small></main>
+<script>const T=Date.now()+14*864e5+8*36e5,$=i=>document.getElementById(i);
+$("dt").textContent=new Date(T).toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+$("ob").onclick=()=>{$("cv").classList.add("o");setTimeout(()=>$("cv").style.display="none",700)};
+let pl=true;$("mb").onclick=()=>{pl=!pl;$("dk").classList.toggle("p",!pl);$("mb").textContent=pl?"Pause":"Play"};
+const tk=()=>{let r=Math.max(0,T-Date.now());$("d").textContent=Math.floor(r/864e5);$("h").textContent=Math.floor(r%864e5/36e5);$("m").textContent=Math.floor(r%36e5/6e4);$("s").textContent=Math.floor(r%6e4/1e3)};tk();setInterval(tk,1000);
+$("rb").onclick=()=>{const v=$("nm").value.trim();$("nt").textContent=v?"Terima kasih "+v+", ucapan Anda terkirim! (demo)":"Silakan isi nama Anda terlebih dahulu.";if(v)$("nm").value=""};</script></body></html>
